@@ -165,6 +165,36 @@
 				<nar.install_name.option>-Wl,-install_name,@executable_path/liblouis-${liblouis.version}.dylib</nar.install_name.option>
 			</properties>
 		</profile>
+		<profile>
+			<id>sonatype-deploy</id>
+			<activation>
+				<property>
+					<name>sonatypeDeploy</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.4</version>
+						<configuration>
+							<useAgent>true</useAgent>
+						</configuration>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 	<pluginRepositories>
 		<pluginRepository>
