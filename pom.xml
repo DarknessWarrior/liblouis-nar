@@ -10,6 +10,8 @@
 		<liblouis.version>${project.version}</liblouis.version>
 		<WIDECHAR_TYPE>unsigned short int</WIDECHAR_TYPE>
 		<TABLESDIR>/usr/local/share/liblouis/tables</TABLESDIR>
+		<nar.arch.option/>
+		<nar.install_name.option/>
 	</properties>
 	<build>
 		<plugins>
@@ -86,7 +88,16 @@
 							<define>PACKAGE_VERSION="${liblouis.version}"</define>
 							<define>TABLESDIR="${TABLESDIR}"</define>
 						</defines>
+						<options>
+							<option>${nar.arch.option}</option>
+						</options>
 					</c>
+					<linker>
+						<options>
+							<option>${nar.arch.option}</option>
+							<option>${nar.install_name.option}</option>
+						</options>
+					</linker>
 					<libraries>
 						<library>
 							<type>shared</type>
@@ -106,6 +117,32 @@
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>i386</id>
+			<activation>
+				<property>
+					<name>os.arch</name>
+					<value>i386</value>
+				</property>
+			</activation>
+			<properties>
+				<nar.arch.option>-m32</nar.arch.option>
+			</properties>
+		</profile>
+		<profile>
+			<id>mac</id>
+			<activation>
+				<property>
+					<name>os.name</name>
+					<value>Mac OS X</value>
+				</property>
+			</activation>
+			<properties>
+				<nar.install_name.option>-Wl,-install_name,@executable_path/liblouis-${liblouis.version}.dylib</nar.install_name.option>
+			</properties>
+		</profile>
+	</profiles>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>duns-maven-snapshots</id>
