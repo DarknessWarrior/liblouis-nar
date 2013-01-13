@@ -162,7 +162,7 @@
 				</property>
 			</activation>
 			<properties>
-				<nar.install_name.option>-Wl,-install_name,@executable_path/liblouis-${liblouis.version}.dylib</nar.install_name.option>
+				<nar.install_name.option>-Wl,-install_name,@loader_path/liblouis-${liblouis.version}.dylib</nar.install_name.option>
 			</properties>
 		</profile>
 		<profile>
