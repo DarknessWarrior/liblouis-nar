@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.liblouis</groupId>
 	<artifactId>louis</artifactId>
-	<version>2.5.3-SNAPSHOT</version>
+	<version>2.3.0-odt2braille-0.1.1-SNAPSHOT</version>
 	<packaging>nar</packaging>
 	<name>liblouis-nar</name>
 	<description>liblouis packaged in a NAR (Native ARchive).</description>
@@ -48,9 +48,9 @@
 							<goal>checkout</goal>
 						</goals>
 						<configuration>
-							<connectionUrl>scm:svn:http://liblouis.googlecode.com/svn/trunk/</connectionUrl>
-							<scmVersion>895</scmVersion>
-							<scmVersionType>revision</scmVersionType>
+							<connectionUrl>scm:git:git://github.com/bertfrees/liblouis.git</connectionUrl>
+							<scmVersion>odt2braille</scmVersion>
+							<scmVersionType>branch</scmVersionType>
 							<skipCheckoutIfExists>true</skipCheckoutIfExists>
 						</configuration>
 					</execution>
